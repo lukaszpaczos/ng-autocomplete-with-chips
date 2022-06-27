@@ -1,0 +1,28 @@
+.autocomplete {
+  &__input {
+    @apply block w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
+    @apply focus:outline-none focus:bg-white focus:border-gray-500;
+
+    input {
+      @apply appearance-none block w-full;
+      @apply focus:outline-none;
+    }
+  }
+
+  &__options {
+    @apply absolute z-10 bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 border border-gray-300;
+
+    &__list {
+      @apply py-1 text-sm text-gray-700 dark:text-gray-200;
+
+      &-option {
+        @apply block px-4 py-2 cursor-pointer;
+        //@apply hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white;
+
+        &.selected {
+          @apply bg-gray-100 dark:bg-gray-600 dark:text-white;
+        }
+      }
+    }
+  }
+}

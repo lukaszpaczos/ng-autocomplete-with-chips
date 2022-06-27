@@ -1,0 +1,35 @@
+<div class="autocomplete"
+     #autocomplete
+     (mouseleave)="onMouseHover(-1)">
+  <p>
+    Possible values: {{ options ? options.join(', ') : '' }}
+  </p>
+  <label class="autocomplete__input">
+    <app-chip-list [chips]="chips"
+                   (onRemove)="onRemoveChip($event)">
+
+    </app-chip-list>
+    <input type="text"
+           [formControl]="inputControl"
+           (click)="open()"
+           (keydown)="onKeyPressed($event)" />
+  </label>
+  <div class="autocomplete__options"
+       [ngClass]="{
+         'hide': !isOpen
+       }">
+    <ul class="autocomplete__options__list">
+      <li *ngIf="options?.length === 0">
+        No results
+      </li>
+      <li class="autocomplete__options__list-option"
+          [value]="i"
+          (click)="onAddChip(option)"
+          (mouseenter)="onMouseHover(i)"
+          [class.selected]="i === hoverOptionIndex"
+          *ngFor="let option of options; let i = index">
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+</div>
